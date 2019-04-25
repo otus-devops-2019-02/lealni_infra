@@ -1,6 +1,8 @@
 # lealni_infra
 lealni Infra repository
 
+##Home Work №3
+
 Параметры подключения:
 ```
 bastion_IP = 35.228.175.1
@@ -29,4 +31,12 @@ User appuser
 
 Host someinternalhost 
 ProxyCommand ssh -q bastion nc -q0 10.166.0.4 22
+```
+
+##Home Work №4
+
+Параметры подключения:
+```
+testapp_IP = 35.228.175.
+testapp_port = 9292
 ```
