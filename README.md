@@ -1,7 +1,7 @@
 # lealni_infra
 lealni Infra repository
 
-##Home Work №3
+## Home Work №3
 
 Параметры подключения:
 ```
@@ -33,7 +33,7 @@ Host someinternalhost
 ProxyCommand ssh -q bastion nc -q0 10.166.0.4 22
 ```
 
-##Home Work №4
+## Home Work №4
 
 Параметры подключения:
 ```
