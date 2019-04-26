@@ -37,6 +37,6 @@ ProxyCommand ssh -q bastion nc -q0 10.166.0.4 22
 
 Параметры подключения:
 ```
-testapp_IP = 35.228.175.
+testapp_IP = 35.228.135.187
 testapp_port = 9292
 ```
