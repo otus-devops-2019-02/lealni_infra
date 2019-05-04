@@ -2,6 +2,7 @@
 lealni Infra repository
 
 ## Home Work №3
+## Знакомство с облачной инфраструктурой
 
 Параметры подключения:
 ```
@@ -34,6 +35,7 @@ ProxyCommand ssh -q bastion nc -q0 10.166.0.4 22
 ```
 
 ## Home Work №4
+## Основные сервисы GCP
 
 Параметры подключения:
 ```
@@ -68,3 +70,23 @@ gcloud compute instances create reddit-app\
 gcloud compute firewall-rules create default-puma-server\
   --allow tcp:9292
 ```
+
+## Home Work №5
+## Модели управления инфраструктурой
+
+
+1. Шаблон создания базового образа ```packer/ubuntu16.json``` настройка осуществляется скриптами
+    1. ```packer/scripts/install_mongodb.sh```
+    2. ```packer/scripts/install_ruby.sh```
+2. Переменные вынесены в файл ```variables.json```, пример заполнения приведен в файле ```variables.json.example```
+3. Команда запуска создания базового образа в папке packer:
+```packer build -var-file variables.json ubuntu16.json```
+4. Шаблон создания образа с установленым приложением ```packer/immutable.json```:
+    1. Установка приложения осущесвляется скриптом ```packer/scripts/deploy.sh```
+    2. Unit-script автозапуска приложения расположен в ```packer/files/reddit.service```
+    3. Настройка автозапуска описана в скрипте ```startup_reddit.sh```
+5. Команда запуска создания полного образа на основе базового в папке packer:
+```packer build -var-file variables.json immutable.json```
+6. Создание инстанса в GCP с запущенным приложением осуществляется скриптом ```config-scripts/create-reddit-vm.sh```
+    1. Команда запуска
+       ```./config-scripts/create-reddit-vm.sh project_id``` , где project_id - id проекта в google cloud
